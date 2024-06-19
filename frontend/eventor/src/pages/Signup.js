@@ -1,18 +1,19 @@
 import React, { useState } from 'react';
 import Cookies from 'js-cookie'; 
+import { useParams, useNavigate } from 'react-router-dom';
 import '../style/User.css';
 const Signup = () => {
     const [form, setForm] = useState({
         name: '',
         username: '',
         password: '',
-        confirmPassword: '',
         email: '',
         phone: '',
         role: 'guest'
     });
     const [errors, setErrors] = useState({});
     const [isLoading, setIsLoading] = useState(false); 
+    const navigate = useNavigate();
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -24,9 +25,7 @@ const Signup = () => {
 
     const validateForm = () => {
         const newErrors = {};
-        if (form.password !== form.confirmPassword) {
-            newErrors.confirmPassword = 'Passwords do not match';
-        }
+        
         
         return newErrors;
     };
@@ -40,21 +39,28 @@ const Signup = () => {
             setErrors({});
             setIsLoading(true);  
             try {
-                const response = await fetch('https://api.example.com/register', {
+                const response = await fetch('https://localhost:7192/User/Register', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
                     },
                     body: JSON.stringify(form),
                 });
+                console.log(JSON.stringify(form));
                 if (!response.ok) {
                     throw new Error('Failed to register');
                 }
                 const data = await response.json();
+                console.log(data);
                 setIsLoading(false);  
                 
                 console.log('User registered successfully:', form);
                 Cookies.set('token', data.token, { expires: 7, path: '/' }); 
+                Cookies.set('username', form.username, { expires: 7, path: '/' }); 
+                Cookies.set('userId', data.userId, { expires: 7, path: '/' }); 
+                Cookies.set('userRole', data.role, { expires: 7, path: '/' }); 
+                navigate('/events'); 
+
             } catch (error) {
                 console.error('Error registering user:', error.message);
                 setIsLoading(false); 
@@ -64,7 +70,7 @@ const Signup = () => {
     };
 
     return (
-        <div>
+        <div className="form-container">
             <h2>Register</h2>
             <form onSubmit={handleSubmit}>
                 <div>
@@ -97,17 +103,7 @@ const Signup = () => {
                         required
                     />
                 </div>
-                <div>
-                    <label>Confirm Password:</label>
-                    <input
-                        type="password"
-                        name="confirmPassword"
-                        value={form.confirmPassword}
-                        onChange={handleChange}
-                        required
-                    />
-                    {errors.confirmPassword && <p style={{ color: 'red' }}>{errors.confirmPassword}</p>}
-                </div>
+                
                 <div>
                     <label>Email:</label>
                     <input

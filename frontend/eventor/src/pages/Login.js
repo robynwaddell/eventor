@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import Cookies from 'js-cookie'; 
 import '../style/User.css';
+import { useParams, useNavigate } from 'react-router-dom';
+
 
 const Login = () => {
     const [form, setForm] = useState({
@@ -9,6 +11,7 @@ const Login = () => {
     });
     const [error, setError] = useState('');
     const [isLoading, setIsLoading] = useState(false); 
+    const navigate = useNavigate();
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -22,13 +25,11 @@ const Login = () => {
         e.preventDefault();
         setIsLoading(true); 
         try {
-            const response = await fetch('https://api.example.com/users/login', {
+            const response = await fetch('https://localhost:7192/User/login?username=' + form.username + '&password=' + form.password, {
                 method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(form),
+               
             });
+            console.log(form['username'] );
             if (!response.ok) {
                 throw new Error('Login failed');
             }
@@ -39,7 +40,14 @@ const Login = () => {
 
             
             Cookies.set('token', data.token, { expires: 7, path: '/' }); 
-            
+            Cookies.set('username', form.username, { expires: 7, path: '/' }); 
+            Cookies.set('userId', data.userId, { expires: 7, path: '/' }); 
+            Cookies.set('userRole', data.role, { expires: 7, path: '/' }); 
+            console.log(data);
+            if(data.role === 'hose')
+                navigate('/events'); 
+            else
+                navigate('/'); 
 
         } catch (error) {
             console.error('Error logging in:', error.message);

@@ -11,20 +11,28 @@ const Events = () => {
 
     useEffect(() => {
         const token = Cookies.get('token');
+        //authentication
+        console.log(token);
         if (!token) {
             navigate('/login'); 
         } else {
+            
             fetchEvents();  
         }
+        
     }, [navigate]);
 
     const fetchEvents = async () => {
+        const userId = Cookies.get('userId');
         try {
-            const response = await fetch('https://api.example.com/events');
+            const response = await fetch(`https://localhost:7192/api/Event/user/${userId}`);
+            console.log(`https://localhost:7192/api/Event/user/${userId}`);
             if (!response.ok) {
                 throw new Error('Failed to fetch events');
             }
-            const eventData = await response.json();
+            const eventDatas = await response.json();
+            let eventData = eventDatas.$values;
+            console.log(eventData);
             setEvents(eventData);
             setIsLoading(false);
         } catch (error) {
@@ -37,7 +45,7 @@ const Events = () => {
     const handleDelete = async (eventId) => {
         if (window.confirm('Are you sure you want to delete this event?')) {
             try {
-                const response = await fetch(`https://api.example.com/events/${eventId}`, {
+                const response = await fetch(`https://localhost:7192/api/Event/${eventId}`, {
                     method: 'DELETE',
                     headers: {
                         'Authorization': `Bearer ${Cookies.get('token')}`
@@ -46,7 +54,7 @@ const Events = () => {
                 if (!response.ok) {
                     throw new Error('Failed to delete event');
                 }
-                setEvents(events.filter(event => event.id !== eventId));
+                setEvents(events.filter(event => event.eventId !== eventId));
             } catch (error) {
                 console.error('Error deleting event:', error.message);
                 setError('Failed to delete event');
@@ -78,18 +86,18 @@ const Events = () => {
                 </thead>
                 <tbody>
                     {events.map(event => (
-                        <tr key={event.id}>
-                            <td><Link to={`/events/${event.id}`}>{event.name}</Link></td>
+                        <tr key={event.eventId}>
+                            <td><Link to={`/edit-event/${event.eventId}`}>{event.name}</Link></td>
                             <td>{event.location}</td>
                             <td>{new Date(event.dateTime).toLocaleString()}</td>
                             <td>{event.category}</td>
                             <td>{event.picture && <img src={event.picture} alt={event.name} className="event-picture" />}</td>
                             <td>
-                                {Cookies.get('userRole') === 'host' && (
+                                {Cookies.get('userRole').toLowerCase() === 'host' && (
                                     <>
-                                        <Link to={`/events/edit/${event.id}`}>Edit</Link>
+                                        <Link to={`/edit-event/${event.eventId}`}>Edit</Link>
                                         {' '}
-                                        <button onClick={() => handleDelete(event.id)}>Delete</button>
+                                        <button onClick={() => handleDelete(event.eventId)}>Delete</button>
                                     </>
                                 )}
                             </td>
@@ -97,7 +105,12 @@ const Events = () => {
                     ))}
                 </tbody>
             </table>
-            <Link to="/events/add">Add Event</Link>
+            {Cookies.get('userRole').toLowerCase() === 'host' && (
+                                    <>
+                                        <Link to="/create-event">Add Event</Link>
+                                    </>
+                                )}
+            
         </div>
     );
 };

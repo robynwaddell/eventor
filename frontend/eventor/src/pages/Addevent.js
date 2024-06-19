@@ -24,10 +24,11 @@ const Addevent = () => {
         } else {
            
             const userRole = Cookies.get('userRole');
-            if (userRole !== 'host') {
+            if (userRole.toLowerCase() !== 'host') {
                 navigate('/permission-denied');  
             }
         }
+        
     }, [navigate]);
 
     const handleChange = (e) => {
@@ -42,11 +43,18 @@ const Addevent = () => {
         e.preventDefault();
         setIsLoading(true);  
         try {
-            const response = await fetch('https://api.example.com/events', {
+            const userId = Cookies.get('userId');
+            const token = Cookies.get('token');
+
+            form['userID'] = userId;
+            console.log(JSON.stringify(form));
+            const response = await fetch('https://localhost:7192/api/Event', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
+                    'Authorization': 'Bearer ' + token,
                 },
+                
                 body: JSON.stringify(form),
             });
             if (!response.ok) {
@@ -55,7 +63,7 @@ const Addevent = () => {
             setIsLoading(false); 
             console.log('Event added successfully:', form);
             setError('');
-            
+            navigate('/events'); 
         } catch (error) {
             console.error('Error adding event:', error.message);
             setIsLoading(false); 

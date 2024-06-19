@@ -3,16 +3,24 @@ import { useParams, useNavigate } from 'react-router-dom';
 import Cookies from 'js-cookie';
 
 const Editevent = () => {
-    const { eventId } = useParams();  
-    const [event, setEvent] = useState(null); 
+    const { id } = useParams();  
+    //const [event, setEvent] = useState(null); 
     const [isLoading, setIsLoading] = useState(true);  
     const [error, setError] = useState('');
+    const [event, setEvent] = useState({
+        name: '',
+        location: '',
+        dateTime: '',
+        category: '',
+        description: '',
+        picture: ''
+    });
     const navigate = useNavigate();
-
-    
+    console.log(useParams());
+   
     const fetchEvent = async () => {
-        try {
-            const response = await fetch(`https://api.example.com/events/${eventId}`);
+        try { 
+            const response = await fetch(`https://localhost:7192/api/Event/${id}`);
             if (!response.ok) {
                 throw new Error('Failed to fetch event');
             }
@@ -34,7 +42,7 @@ const Editevent = () => {
         } else {
             fetchEvent(); 
         }
-    }, [navigate]);
+    }, [navigate], id);
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -46,19 +54,31 @@ const Editevent = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+        
         try {
-            const response = await fetch(`https://api.example.com/events/${eventId}`, {
+            const form = {
+                name: event.name,
+                location: event.location,
+                dateTime: event.dateTime,
+                category: event.category,
+                description: event.description,
+                picture: event.picture
+            };
+            console.log(JSON.stringify(form));
+            const token = Cookies.get('token');
+            const response = await fetch(`https://localhost:7192/api/Event/${id}`, {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json',
+                    'Authorization': 'Bearer ' + token,
                 },
-                body: JSON.stringify(event),
+                body: JSON.stringify(form),
             });
             if (!response.ok) {
                 throw new Error('Failed to update event');
             }
             console.log('Event updated successfully:', event);
-            
+            navigate('/events'); 
         } catch (error) {
             console.error('Error updating event:', error.message);
             setError('Failed to update event');
