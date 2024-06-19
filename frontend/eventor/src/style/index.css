@@ -1,13 +1,433 @@
+/*MAIN/BODY*/
 body {
+  font-family: acumin-pro, system-ui, sans-serif;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  display: flex;
+  flex-direction: column;
+  font-size: 14px;
+  background-color: #111318;
+  color: #fff;
+  min-height: 100vh;
+  overflow-x: hidden; 
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+main {
+  flex: 1;
+  box-sizing: border-box; 
+}
+
+/*HEADER*/
+header {
+  height: 60px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 60px;
+  width: 100%;
+  top: 0;
+  z-index: 1000;
+  background-color: transparent; 
+  position: fixed; 
+  box-sizing: border-box; 
+}
+
+header .title {
+  margin: 0;
+}
+
+header .title h1 {
+  margin: 0;
+}
+
+header .title h1 a {
+  color: #fff; 
+  text-decoration: none; 
+}
+
+header .title h1 a:hover {
+  color: #CCF5AC;
+}
+
+header .nav ul {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+  padding: 0; 
+  margin: 0; 
+}
+
+header .nav ul li {
+  color: #fff;
+}
+
+header .nav ul li a {
+  color: #fff;
+  text-decoration: none; 
+}
+
+header .nav ul li a:hover {
+  color: #CCF5AC; 
+}
+
+/*FOOTER*/
+.footer {
+  display: flex;
+  height: 200px;
+  flex-flow: row wrap;
+  padding: 30px 30px 20px 30px;
+  color: #fff;
+  background-color: #222;
+  border-top: 1px solid #e5e5e5;
+  width: 100%;
+  bottom: 0;
+  box-sizing: border-box; 
+}
+
+.footer > * {
+  flex: 1 100%;
+}
+
+.footer__addr {
+  margin-right: 1.25em;
+  margin-bottom: 2em;
+}
+
+.footer__logo {
+  font-weight: 400;
+  text-transform: lowercase;
+  font-size: 1.5rem;
+}
+
+.footer__addr h2 {
+  margin-top: 1.3em;
+  font-size: 15px;
+  font-weight: 400;
+}
+
+.nav__title {
+  font-weight: 400;
+  font-size: 15px;
+}
+
+.footer address {
+  font-style: normal;
+  color: #999;
+}
+
+.footer__btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 36px;
+  max-width: max-content;
+  background-color: rgb(33, 33, 33, 0.07);
+  border-radius: 100px;
+  color: #CCF5AC;
+  line-height: 0;
+  margin: 0.6em 0;
+  font-size: 1rem;
+  padding: 0 1.3em;
+}
+
+.footer ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+.footer li {
+  line-height: 2em;
+}
+
+.footer a {
+  text-decoration: none;
+}
+
+.footer__nav {
+  display: flex;
+  flex-flow: row wrap;
+}
+
+.footer__nav > * {
+  flex: 1 50%;
+  margin-right: 1.25em;
+}
+
+.nav__ul a {
+  color: #999;
+}
+
+.nav__ul--extra {
+  column-count: 2;
+  column-gap: 1.25em;
+}
+
+.legal {
+  display: flex;
+  flex-wrap: wrap;
+  color: #999;
+}
+
+.legal__links {
+  display: flex;
+  align-items: center;
+}
+
+.heart {
+  color: #2f2f2f;
+}
+
+/*HOME*/
+.hero {
+  position: relative;
+  height: 100dvh;
+  background: url('./img/blue-purple-concert-money.jpg') no-repeat center center;
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%; 
+  box-sizing: border-box;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.55); 
+}
+
+.hero .hero-text {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+}
+
+.hero-text h1 {
+  font-size: 80px;
+  color: #fff;
+  margin: 0;
+}
+
+.hero-text p {
+  color: #fff;
+  margin: 0;
+  font-size: 24px;
+}
+
+.hero, .features, .about, .contact {
+  padding: 60px;
+  margin-bottom: 40px;
+}
+
+.features {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.feature {
+  height: 200px;
+  width: 350px;
+  border: 1px solid #999;
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #222;
+  color: #fff;
+  text-align: center;
+}
+
+.about, .contact {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  box-sizing: border-box; 
+}
+
+.about-text, .contact-text {
+  width: 45%; /* Adjust width to fit images */
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.about-img, .contact-img {
+  width: 45%; /* Adjust width to fit text */
+  height: 400px; /* Set fixed height for consistency */
+  background-size: cover;
+  background-position: center;
+  box-sizing: border-box;
+}
+
+.about-img {
+  background: url('./img/small-heart-hands.jpg') no-repeat center center;
+}
+
+.contact-img {
+  background: url('./img/small-purple-concert.jpg') no-repeat center center;
+}
+
+.contact-text ul {
+ list-style: none;
+}
+
+.contact-text ul li{
+  text-decoration: none;
+  text-align: left;
+}
+
+/*EVENTS*/
+
+.events-title {
+  font-size: 40px;
+  font-weight: 400;
+  text-align: center;
+}
+
+.events-img {
+  position: relative;
+  height: 500px;
+  background: url('./img/dj-rave.jpg') no-repeat center center;
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%; 
+  box-sizing: border-box;
+}
+
+.events-img::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.55); 
+}
+
+.events-img-overlay {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+}
+
+.events-img-overlay h2 {
+  color: #fff;
+  margin: 0;
+}
+
+.event-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  padding: 20px;
+}
+
+.event-card {
+  background-color: #222;
+  color: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  width: 200px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.event-card h3 {
+  margin: 0 0 10px;
+}
+
+.event-card p {
+  margin: 5px 0;
+}
+
+.event-card a {
+  color: #CCF5AC;
+  text-decoration: none;
+}
+
+.event-card a:hover {
+  text-decoration: underline;
+}
+
+
+/*HOSTS*/
+.hosts-title {
+  font-size: 40px;
+  font-weight: 400;
+  text-align: center;
+}
+
+.host-img {
+  position: relative;
+  height: 500px;
+  background: url('./img/people-on-catwalk-at-club.jpg') no-repeat center center;
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%; 
+  box-sizing: border-box;
+}
+
+.host-img::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.55); 
+}
+
+.host-img-overlay {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+}
+
+.host-img-overlay h2 {
+  color: #fff;
+  margin: 0;
+}
+
+.host-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  padding: 20px;
+}
+
+.host-card {
+  background-color: #222;
+  color: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  width: 200px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.host-card h3 {
+  margin: 0 0 10px;
+}
+
+.host-card p {
+  margin: 5px 0;
+}
+
+.host-card a {
+  color: #CCF5AC;
+  text-decoration: none;
+}
+
+.host-card a:hover {
+  text-decoration: underline;
 }
