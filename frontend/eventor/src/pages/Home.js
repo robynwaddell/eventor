@@ -12,16 +12,22 @@ function Home() {
         </div>
       </section>
       <section className='features'>
-        <div className='feature feature-one'>
-            <h2>Unlimited Guests</h2>
-        </div>
-        <div className='feature feature-two'>
-            <h2>Customized Events</h2>
-        </div>
-        <div className='feature feature-three'>
-            <h2>Target Your Community</h2>
-        </div>
-      </section>
+  <div className='feature feature-one'>
+    <div className='feature-text'>
+      <h2>Unlimited Guests</h2>
+    </div>
+  </div>
+  <div className='feature feature-two'>
+    <div className='feature-text'>
+      <h2>Customized Events</h2>
+    </div>
+  </div>
+  <div className='feature feature-three'>
+    <div className='feature-text'>
+      <h2>Target Your Community</h2>
+    </div>
+  </div>
+</section>
       <section className='about'>
         <div className='about-img'></div>
         <div className='about-text'>
