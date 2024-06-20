@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Cookies from 'js-cookie'; 
 import '../style/User.css';
-import { useParams, useNavigate } from 'react-router-dom';
+import { useParams, useNavigate, Link } from 'react-router-dom';
 
 
 const Login = () => {
@@ -44,8 +44,8 @@ const Login = () => {
             Cookies.set('userId', data.userId, { expires: 7, path: '/' }); 
             Cookies.set('userRole', data.role, { expires: 7, path: '/' }); 
             console.log(data);
-            if(data.role === 'hose')
-                navigate('/events'); 
+            if(data.role === 'host')
+                navigate('/profile'); 
             else
                 navigate('/'); 
 
@@ -57,8 +57,8 @@ const Login = () => {
     };
 
     return (
-        <main className="main-container">
-            <div className="overlay"></div>
+        <main className='main-container'>
+            <div className='overlay'></div>
             <div className="form-container">
                 <h2>Login</h2>
                 <form onSubmit={handleSubmit}>
@@ -86,6 +86,7 @@ const Login = () => {
                     <button type="submit" disabled={isLoading}>
                         {isLoading ? 'Logging in...' : 'Login'}
                     </button>
+                    <Link to="/signup">Sign Up</Link>
                 </form>
             </div>
         </main>

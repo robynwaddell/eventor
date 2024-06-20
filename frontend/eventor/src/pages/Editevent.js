@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import Cookies from 'js-cookie';
+import '../style/User.css';
 
 const Editevent = () => {
     const { id } = useParams();  
@@ -78,7 +79,7 @@ const Editevent = () => {
                 throw new Error('Failed to update event');
             }
             console.log('Event updated successfully:', event);
-            navigate('/events'); 
+            navigate('/profile'); 
         } catch (error) {
             console.error('Error updating event:', error.message);
             setError('Failed to update event');
@@ -94,10 +95,12 @@ const Editevent = () => {
     }
 
     return (
-        <div>
+        <main className="main-container">
+            <div className="overlay"></div>
+        <div className='form-container'>
             <h2>Edit Event</h2>
             <form onSubmit={handleSubmit}>
-                <div>
+                <div className="form-group">
                     <label>Name:</label>
                     <input
                         type="text"
@@ -107,7 +110,7 @@ const Editevent = () => {
                         required
                     />
                 </div>
-                <div>
+                <div className="form-group">
                     <label>Location:</label>
                     <input
                         type="text"
@@ -117,7 +120,7 @@ const Editevent = () => {
                         required
                     />
                 </div>
-                <div>
+                <div className="form-group">
                     <label>Date and Time:</label>
                     <input
                         type="datetime-local"
@@ -127,7 +130,7 @@ const Editevent = () => {
                         required
                     />
                 </div>
-                <div>
+                <div className="form-group">
                     <label>Category:</label>
                     <input
                         type="text"
@@ -137,7 +140,7 @@ const Editevent = () => {
                         required
                     />
                 </div>
-                <div>
+                <div className="form-group">
                     <label>Description:</label>
                     <textarea
                         name="description"
@@ -146,7 +149,7 @@ const Editevent = () => {
                         required
                     ></textarea>
                 </div>
-                <div>
+                <div className="form-group">
                     <label>Picture:</label>
                     <input
                         type="text"
@@ -158,6 +161,7 @@ const Editevent = () => {
                 <button type="submit">Update Event</button>
             </form>
         </div>
+        </main>
     );
 };
 

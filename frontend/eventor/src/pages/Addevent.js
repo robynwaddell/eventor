@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';  
 import Cookies from 'js-cookie';
+import '../style/User.css';
 
 const Addevent = () => {
     const [form, setForm] = useState({
@@ -63,7 +64,7 @@ const Addevent = () => {
             setIsLoading(false); 
             console.log('Event added successfully:', form);
             setError('');
-            navigate('/events'); 
+            navigate('/profile'); 
         } catch (error) {
             console.error('Error adding event:', error.message);
             setIsLoading(false); 
@@ -72,10 +73,12 @@ const Addevent = () => {
     };
 
     return (
+        <main className="main-container">
+            <div className="overlay"></div>
         <div>
             <h2>Add Event</h2>
-            <form onSubmit={handleSubmit}>
-                <div>
+            <form onSubmit={handleSubmit} className='form-container'>
+                <div className="form-group">
                     <label>Name:</label>
                     <input
                         type="text"
@@ -85,7 +88,7 @@ const Addevent = () => {
                         required
                     />
                 </div>
-                <div>
+                <div className="form-group">
                     <label>Location:</label>
                     <input
                         type="text"
@@ -95,7 +98,7 @@ const Addevent = () => {
                         required
                     />
                 </div>
-                <div>
+                <div className="form-group">
                     <label>Date and Time:</label>
                     <input
                         type="datetime-local"
@@ -105,7 +108,7 @@ const Addevent = () => {
                         required
                     />
                 </div>
-                <div>
+                <div className="form-group">
                     <label>Category:</label>
                     <input
                         type="text"
@@ -115,7 +118,7 @@ const Addevent = () => {
                         required
                     />
                 </div>
-                <div>
+                <div className="form-group">
                     <label>Description:</label>
                     <textarea
                         name="description"
@@ -124,7 +127,7 @@ const Addevent = () => {
                         required
                     ></textarea>
                 </div>
-                <div>
+                <div className="form-group">
                     <label>Picture:</label>
                     <input
                         type="text"
@@ -139,6 +142,7 @@ const Addevent = () => {
                 </button>
             </form>
         </div>
+        </main>
     );
 };
 

@@ -59,7 +59,10 @@ const Signup = () => {
                 Cookies.set('username', form.username, { expires: 7, path: '/' }); 
                 Cookies.set('userId', data.userId, { expires: 7, path: '/' }); 
                 Cookies.set('userRole', data.role, { expires: 7, path: '/' }); 
-                navigate('/events'); 
+                if(data.role === 'host')
+                    navigate('/profile'); 
+                else
+                    navigate('/'); 
 
             } catch (error) {
                 console.error('Error registering user:', error.message);

@@ -10,6 +10,8 @@ import Hosts from './pages/Hosts';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import Denied from './pages/Denied';
+import Hostevent from './pages/Hostevent';
+import Becometohost from './pages/Becometohost';
 
 function App() {
   return (
@@ -26,6 +28,8 @@ function App() {
                     <Route path="/edit-event/:id" element={<Editevent />} />
                     <Route path="/eventsss" element={<Events />} />
                     <Route path="/permission-denied" element={<Denied />} />
+                    <Route path="/profile" element={<Hostevent />} />
+                    <Route path="/Becometohost" element={<Becometohost />} />
       </Routes>
     </main>
 

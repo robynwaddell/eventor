@@ -3,6 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import Cookies from 'js-cookie';
 import '../style/User.css'; 
 
+
 const Events = () => {
     const [events, setEvents] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
@@ -71,7 +72,9 @@ const Events = () => {
     }
 
     return (
-        <div>
+        <main className="main-container">
+            <div className="overlay"></div>
+        <div className="list-container">
             <h2>Event List</h2>
             <table className="event-table">
                 <thead>
@@ -95,7 +98,7 @@ const Events = () => {
                             <td>
                                 {Cookies.get('userRole').toLowerCase() === 'host' && (
                                     <>
-                                        <Link to={`/edit-event/${event.eventId}`}>Edit</Link>
+                                        
                                         {' '}
                                         <button onClick={() => handleDelete(event.eventId)}>Delete</button>
                                     </>
@@ -112,6 +115,7 @@ const Events = () => {
                                 )}
             
         </div>
+        </main>
     );
 };
 
