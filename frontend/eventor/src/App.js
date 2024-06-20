@@ -5,6 +5,11 @@ import AddEvent from './pages/Addevent';
 import Events from './pages/Events';
 import Editevent from './pages/Editevent';
 import Login from './pages/Login';
+import Home from './pages/Home';
+import Hosts from './pages/Hosts';
+import Header from './components/Header';
+import Footer from './components/Footer';
+import Denied from './pages/Denied';
 
 function App() {
   return (
@@ -20,6 +25,7 @@ function App() {
                     <Route path="/create-event" element={<AddEvent />} />
                     <Route path="/edit-event/:id" element={<Editevent />} />
                     <Route path="/eventsss" element={<Events />} />
+                    <Route path="/permission-denied" element={<Denied />} />
       </Routes>
     </main>
 
