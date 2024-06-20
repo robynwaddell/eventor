@@ -70,10 +70,12 @@ const Signup = () => {
     };
 
     return (
+        <main className="main-container">
+            <div className="overlay"></div>
         <div className="form-container">
             <h2>Register</h2>
             <form onSubmit={handleSubmit}>
-                <div>
+                <div className="form-group">
                     <label>Name:</label>
                     <input
                         type="text"
@@ -83,7 +85,7 @@ const Signup = () => {
                         required
                     />
                 </div>
-                <div>
+                <div className="form-group">
                     <label>Username:</label>
                     <input
                         type="text"
@@ -93,7 +95,7 @@ const Signup = () => {
                         required
                     />
                 </div>
-                <div>
+                <div className="form-group">
                     <label>Password:</label>
                     <input
                         type="password"
@@ -104,7 +106,7 @@ const Signup = () => {
                     />
                 </div>
                 
-                <div>
+                <div className="form-group">
                     <label>Email:</label>
                     <input
                         type="email"
@@ -114,7 +116,7 @@ const Signup = () => {
                         required
                     />
                 </div>
-                <div>
+                <div className="form-group">
                     <label>Phone:</label>
                     <input
                         type="text"
@@ -123,7 +125,7 @@ const Signup = () => {
                         onChange={handleChange}
                     />
                 </div>
-                <div>
+                <div className="form-group">
                     <label>Role:</label>
                     <select name="role" value={form.role} onChange={handleChange} required>
                         <option value="host">Host</option>
@@ -135,6 +137,7 @@ const Signup = () => {
                 </button>
             </form>
         </div>
+        </main>
     );
 };
 

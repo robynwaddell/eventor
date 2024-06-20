@@ -1,34 +1,65 @@
+
+body, html {
+    height: 100%;
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+.main-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100dvh;
+    position: relative;
+    background: url('./img/blue-purple-concert-money.jpg') no-repeat center center;
+    background-size: cover;
+    background-position: center;
+    overflow: hidden;
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5); /* 背景遮罩，颜色变暗 */
+}
+
 .form-container {
-    width: 400px;
+    color: #000;
+    position: relative;
+    background-color: rgba(255, 255, 255, 0.8); /* 半透明效果 */
     padding: 20px;
-    background-color: #f0f0f0;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    width: 400px;
+    text-align: center;
+    z-index: 1; /* 使表单位于遮罩之上 */
 }
 
 .form-group {
-    margin-bottom: 10px;
-    line-height:2.5 ;
-}
-
-form {
-    display: flex;
-    flex-direction: column;
+    margin-bottom: 15px;
 }
 
 button {
-    background-color: #007bff;
-    color: white;
+    width: 100%;
+    padding: 10px;
     border: none;
-    padding: 10px 20px;
+    border-radius: 5px;
+    background-color: #007BFF;
+    color: white;
     cursor: pointer;
-    border-radius: 4px;
 }
 
-button:hover {
+button:disabled {
+    background-color: #aaa;
+}
+
+button:hover:enabled {
     background-color: #0056b3;
 }
+
 
 .event-table {
     width: 100%;
