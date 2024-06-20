@@ -4,7 +4,7 @@ body {
   margin: 0;
   display: flex;
   flex-direction: column;
-  font-size: 14px;
+  font-size: 18px;
   background-color: #111318;
   color: #fff;
   min-height: 100vh;
@@ -209,7 +209,7 @@ social-links li a {
 .feature {
   height: 200px;
   width: 350px;
-  border: 1px solid #999;
+  border: 1px solid #9381fcd0;
   border-radius: 5px;
   display: flex;
   justify-content: center;
@@ -217,6 +217,57 @@ social-links li a {
   background-color: #222;
   color: #fff;
   text-align: center;
+  position: relative; /* Added position: relative; */
+}
+
+.feature-one {
+  background-image: url('./img/3.png');
+}
+
+.feature-one::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.55);
+  z-index: 1;
+}
+
+.feature-two {
+  background-image: url('./img/2.png');
+}
+
+.feature-two::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.55);
+  z-index: 1;
+}
+
+.feature-three {
+  background-image: url('./img/1.png');
+}
+
+.feature-three::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.55);
+  z-index: 1;
+}
+
+.feature .feature-text {
+  position: relative;
+  z-index: 2;
 }
 
 .about, .contact {
@@ -227,15 +278,19 @@ social-links li a {
   box-sizing: border-box;
 }
 
+.about h2, .contact h2 {
+  color: #9381fc;
+}
+
 .about-text, .contact-text {
-  width: 45%; /* Adjust width to fit images */
+  width: 45%; 
   padding: 20px;
   box-sizing: border-box;
 }
 
 .about-img, .contact-img {
-  width: 45%; /* Adjust width to fit text */
-  height: 400px; /* Set fixed height for consistency */
+  width: 45%; 
+  height: 400px; 
   background-size: cover;
   background-position: center;
   box-sizing: border-box;
@@ -256,6 +311,16 @@ social-links li a {
 .contact-text ul li{
   text-decoration: none;
   text-align: left;
+}
+
+.contact button {
+  background-color: #CCF5AC;
+  color: #444;
+  border-radius: 5px;
+}
+
+.contact button:hover {
+  background-color: #a6cd87;
 }
 
 /*EVENTS*/
@@ -301,8 +366,8 @@ social-links li a {
 
 .event-list {
   display: flex;
-  flex-direction: column;  /* Arrange event cards in a column */
-  align-items: center;  /* Center align items */
+  flex-direction: column;  
+  align-items: center;  
   gap: 20px;
   padding: 20px;
 }
@@ -316,7 +381,7 @@ social-links li a {
   margin: 10px 0;
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  width: 80%;  /* Make event cards more rectangular */
+  width: 80%;  
 }
 
 .event-image {
@@ -405,7 +470,7 @@ social-links li a {
   width: 200px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   text-align: center;
-  flex: 1 0 30%; /* Make host cards appear in rows of three */
+  flex: 1 0 30%; 
 }
 
 .host-card h3 {
