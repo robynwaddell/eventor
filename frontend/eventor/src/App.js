@@ -34,9 +34,9 @@ function App() {
                     <Route path="/permission-denied" element={<Denied />} />
                     <Route path="/profile" element={<Hostevent />} />
                     <Route path="/Becometohost" element={<Becometohost />} />
-          <Route path="/host/:id" element={<Host />} />  
+          <Route path="/hosts/:id" element={<Host />} />  
           <Route path="/permission-denied" element={<Denied />} />
-          <Route path="/event/:id" element={<Event />} />
+          <Route path="/events/:id" element={<Event />} />
       </Routes>
       </main>
       
