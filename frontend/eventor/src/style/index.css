@@ -369,6 +369,7 @@ social-links li a {
   grid-template-columns: repeat(2, 1fr); /* Two columns */
   margin-left: 60px;
   margin-right: 60px;
+  margin-top: 60px;
   gap: 60px;
   padding: 20px;
 }
@@ -471,6 +472,7 @@ social-links li a {
   padding: 20px;
   margin-left: 60px;
   margin-right: 60px;
+  margin-top: 60px;
 }
 
 .host-card {
