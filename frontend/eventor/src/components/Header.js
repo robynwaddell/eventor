@@ -13,7 +13,6 @@ function Header() {
           <li><NavLink className={({isActive}) => (isActive ? 'active' : '')}to='/hosts'>Find a Host</NavLink></li>
           <li><NavLink className={({isActive}) => (isActive ? 'active' : '')} to='/create-event'>Create an Event</NavLink></li>
           <li><NavLink className={navData => (navData.isActive ? 'active' : '')} to='/login'>Login</NavLink></li>
-          <li><NavLink className={({isActive}) => (isActive ? 'active' : '')} to='/profile'><i class="fa-solid fa-user"></i></NavLink></li>
         </ul>
       </nav>
     </header>
