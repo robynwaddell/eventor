@@ -9,7 +9,7 @@ function Host() {
     useEffect(() => {
       const fetchHost = async () => {
         try {
-          const response = await axios.get(`/hosts/${id}`);
+          const response = await axios.get(`https://localhost:7192/User/GetBy${id}`);
           setHost(response.data);
         } catch (error) {
           console.error(error);
