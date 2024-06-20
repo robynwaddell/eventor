@@ -35,7 +35,7 @@ function Events() {
                             <h3>{event.name}</h3>
                             <p>{event.location}</p>
                             <p>{new Date(event.dateTime).toLocaleString()}</p>
-                            <Link to={`/events/${event.eventId}`}>View Details</Link>
+                            <Link to={`/event/${event.eventId}`}>View Details</Link>
                         </div>
                     </div>
                 ))}
