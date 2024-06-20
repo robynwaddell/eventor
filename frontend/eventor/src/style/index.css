@@ -71,6 +71,10 @@ header .nav ul li a:hover {
   color: #CCF5AC;
 }
 
+.line-down{
+  margin-top: 10px;
+}
+
 /*FOOTER*/
 .footer {
   background-color: #444;
