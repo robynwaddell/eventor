@@ -30,7 +30,7 @@ function App() {
           <Route path="/edit-event/:id" element={<Editevent />} />
           <Route path="/events/:id" element={<Event />} />  
           <Route path="/hosts/:id" element={<Host />} />  
-                      <Route path="/permission-denied" element={<Denied />} />
+          <Route path="/permission-denied" element={<Denied />} />
       </Routes>
       </main>
       
