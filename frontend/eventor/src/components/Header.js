@@ -24,7 +24,7 @@ function Header() {
           {
             token ? (
               <>
-              <li>Welcome, {Username}</li>
+              <li className='line-down'>Welcome, {Username}</li>
               <li><button onClick={handleLogout} className="logout-button">Logout</button></li>
               </>
             ) : (

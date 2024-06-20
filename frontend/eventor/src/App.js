@@ -11,6 +11,9 @@ import Login from './pages/Login';
 import Denied from './pages/Denied';
 import Hostevent from './pages/Hostevent';
 import Becometohost from './pages/Becometohost';
+import LoginSignUp from './pages/LoginSignUp';
+import Event from './pages/Event';  
+import Host from './pages/Host';  
 
 function App() {
   return (
@@ -29,6 +32,9 @@ function App() {
                     <Route path="/permission-denied" element={<Denied />} />
                     <Route path="/profile" element={<Hostevent />} />
                     <Route path="/Becometohost" element={<Becometohost />} />
+          <Route path="/hosts/:id" element={<Host />} />  
+          <Route path="/permission-denied" element={<Denied />} />
+          <Route path="/events/:id" element={<Event />} />
       </Routes>
       </main>
       
