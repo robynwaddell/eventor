@@ -38,19 +38,11 @@ function Home() {
           <p>
             We are here to help 24/7. Reach out to us by phone, email, or join our live chat to speak to an associate immediately.
           </p>
-          <ul>
-            <li><a href="tel:2041234567">204 123 4567</a></li>
-            <li><a href="mailto:eventor@email.com">eventor@email.com</a></li>
-            <li><button>Chat with Us</button></li>
-          </ul>
+          <p>204 123 4567</p>
+          <p>eventor@email.com</p>
+          <button>Chat with Us</button>
         </div>
         <div className='contact-img'></div>
-      </section>
-      <section className='extra-section'>
-        <div>
-          <h2>Join Our Community</h2>
-          <p>Become a part of our vibrant community and stay updated with the latest events and news. Sign up now!</p>
-        </div>
       </section>
     </main>
   )
